@@ -5,7 +5,19 @@ import { StyledCartProductCard } from './style';
 import { StyledTitle } from '../../../../styles/typography';
 import { cartContext } from '../../../../providers/cartContext';
 
-const CartProductCard = ({ product }) => {
+interface Product {
+  name: string;
+  price: number;
+  category: string;
+  img: string;
+  id: number;
+}
+
+interface Props {
+  product: Product;
+}
+
+const CartProductCard = ({ product }: Props) => {
   const { cart, setCart, total, setTotal } = useContext(cartContext);
 
   function removeProduct() {

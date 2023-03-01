@@ -5,18 +5,29 @@ import { StyledButton } from '../../../styles/button';
 import { StyledParagraph, StyledTitle } from '../../../styles/typography';
 import { cartContext } from '../../../providers/cartContext';
 
-const ProductCard = ({ name, price, category, img, product }) => {
+interface Product {
+  name: string;
+  price: number;
+  category: string;
+  img: string;
+  id: number;
+}
+
+interface ProductCardProps {
+  product: Product;
+}
+const ProductCard = ({ product }: ProductCardProps) => {
   const { setCart, cart, setTotal, total } = useContext(cartContext);
 
-  function handleAdd() {
-    const newCart = [...cart, product];
+  function handleAdd(prop: Product) {
+    const newCart = [...cart, prop];
 
     function verifyProduct() {
       return cart.some((sale) => sale.id === product.id);
     }
     if (!verifyProduct()) {
       setCart(newCart);
-      setTotal(total + price);
+      setTotal(total + product.price);
       toast.success('Produto adicionado ao carrinho ', {
         position: 'top-right',
         autoClose: 5000,
@@ -44,14 +55,16 @@ const ProductCard = ({ name, price, category, img, product }) => {
   return (
     <StyledProductCard>
       <div className='imageBox'>
-        <img src={img} alt='Hamburguer' />
+        <img src={product.img} alt='Hamburguer' />
       </div>
       <div className='content'>
         <StyledTitle tag='h3' $fontSize='three'>
-          {name}
+          {product.name}
         </StyledTitle>
-        <StyledParagraph className='category'>{category}</StyledParagraph>
-        <StyledParagraph className='price'>{price}</StyledParagraph>
+        <StyledParagraph className='category'>
+          {product.category}
+        </StyledParagraph>
+        <StyledParagraph className='price'>{product.price}</StyledParagraph>
         <StyledButton
           $buttonSize='medium'
           $buttonStyle='green'

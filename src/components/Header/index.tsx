@@ -1,12 +1,12 @@
 import { MdShoppingCart, MdLogout } from 'react-icons/md';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import SearchForm from './SearchForm';
 import { StyledHeader } from './style';
 import LogoKenzieBurguer from '../../assets/LogoKenzieBurguer.svg';
 import { StyledContainer } from '../../styles/grid';
 import { cartContext } from '../../providers/cartContext';
-import { toast } from 'react-toastify';
 
 const Header = () => {
   const { setModal } = useContext(cartContext);

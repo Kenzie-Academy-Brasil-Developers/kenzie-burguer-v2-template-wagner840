@@ -22,7 +22,7 @@ const RegisterPage = () => {
     resolver: yupResolver(registerSchemaForm),
   });
 
-  function onSubmit(formData: unknown) {
+  function onSubmit(formData: unknown): void {
     registerUser(formData);
   }
 

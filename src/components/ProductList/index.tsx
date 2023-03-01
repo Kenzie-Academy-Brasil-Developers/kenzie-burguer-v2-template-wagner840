@@ -19,24 +19,10 @@ const ProductList = () => {
     <StyledProductList>
       {filteredProducts.length > 0
         ? filteredProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              name={product.name}
-              category={product.category}
-              price={product.price}
-              img={product.img}
-            />
+            <ProductCard key={product.id} product={product} />
           ))
         : products.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              name={product.name}
-              category={product.category}
-              price={product.price}
-              img={product.img}
-            />
+            <ProductCard key={product.id} product={product} />
           ))}
     </StyledProductList>
   );

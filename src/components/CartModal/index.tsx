@@ -9,6 +9,10 @@ import { cartContext } from '../../providers/cartContext';
 const CartModal = () => {
   const { modal, setModal, cart } = useContext(cartContext);
 
+  if (!modal) {
+    return null;
+  }
+
   return (
     modal && (
       <StyledCartModalBox>
